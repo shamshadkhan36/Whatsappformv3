@@ -5,70 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lead Capture Form to WhatsApp</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f4f4f4; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
         }
-        form {
-            background-color: white;
-            max-width: 400px;
-            width: 100%;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        form { 
+            background-color: white; 
+            max-width: 400px; 
+            width: 100%; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
         }
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
+        h2 { 
+            text-align: center; 
+            color: #333; 
+            margin-bottom: 20px; 
         }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #555;
+        label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            color: #555; 
         }
-        input[type="text"],
-        input[type="number"] {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 16px;
-            transition: border-color 0.2s;
+        input[type="text"], input[type="number"] { 
+            width: 100%; 
+            padding: 12px; 
+            margin-bottom: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 6px; 
+            font-size: 16px; 
         }
-        input[type="text"]:focus,
-        input[type="number"]:focus {
-            border-color: #25D366;
-            outline: none;
+        button { 
+            background-color: #25D366; 
+            color: white; 
+            padding: 12px 20px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-size: 18px; 
+            width: 100%; 
+            font-weight: bold; 
         }
-        button {
-            background-color: #25D366;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-            width: 100%;
-            transition: background-color 0.2s;
-        }
-        button:hover {
-            background-color: #1DA851;
-        }
+        button:hover { background-color: #1DA851; }
     </style>
 </head>
 <body>
+
     <form id="whatsappForm">
         <h2>Submit Your Inquiry 🟢</h2>
+
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required placeholder="Enter your full name">
 
@@ -80,24 +71,27 @@
 
         <button type="submit">Contact Me via WhatsApp</button>
     </form>
+
     <script>
         document.getElementById('whatsappForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const age = document.getElementById('age').value.trim();
-            const location = document.getElementById('location').value.trim();
-            const phoneNumber = '919370262177'; // Your WhatsApp number
 
-            // Construct the pre-filled message. Use * for bold, _ for italic in WhatsApp
-            let message = `*🟢 New Lead Information 🟢*%0A%0A*Name:* ${name}%0A*Age:* ${age}%0A*Location:* ${location}%0A%0A_Please follow up on this lead as soon as possible._`;
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const location = document.getElementById('location').value;
 
-            // Encode message
-            const encodedMessage = encodeURIComponent(message);
+            const phoneNumber = '919370262177'; // Your WhatsApp Number
 
-            // Open WhatsApp
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            let message = `*🟢 New Lead Information 🟢*%0A%0A`;
+            message += `*Name:* ${name}%0A`;
+            message += `*Age:* ${age}%0A`;
+            message += `*Location:* ${location}%0A%0A`;
+            message += `_Please follow up on this lead as soon as possible._`;
+
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.location.href = whatsappUrl;
         });
     </script>
+
 </body>
 </html>

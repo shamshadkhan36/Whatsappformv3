@@ -82,13 +82,14 @@
 
             const phoneNumber = '919370262177'; // Your WhatsApp Number
 
+            // Do NOT use encodeURIComponent() — We are using %0A correctly
             let message = `*🟢 New Lead Information 🟢*%0A%0A`;
             message += `*Name:* ${name}%0A`;
             message += `*Age:* ${age}%0A`;
             message += `*Location:* ${location}%0A%0A`;
             message += `_Please follow up on this lead as soon as possible._`;
 
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
             window.location.href = whatsappUrl;
         });
     </script>
